@@ -12,23 +12,8 @@ export async function GET() {
 
 export async function DELETE(request: NextRequest) {
   const { _id } = await request.json();
-  console.log(request);
   await connectToMongo();
   await HistoryModel.deleteOne({ _id });
-  await mongoose.connection.close();
-  return Response.json({ message: "ok" });
-}
-
-export async function POST(request: NextRequest) {
-  const { city, country, lat, lon } = await request.json();
-
-  await connectToMongo();
-  await HistoryModel.create({
-    city,
-    country,
-    lat: lat,
-    lon: lon,
-  });
   await mongoose.connection.close();
   return Response.json({ message: "ok" });
 }

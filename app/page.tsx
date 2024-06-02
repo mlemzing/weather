@@ -33,7 +33,12 @@ export default function Home() {
         body: formData,
       });
 
+      if (response.status !== 200) {
+        throw Error("Place not found");
+      }
+
       const data = await response.json();
+
       setCity(data.name);
       setCountry(data.country);
       setWeather(data.weather);
@@ -73,7 +78,6 @@ export default function Home() {
         method: "POST",
         body: formData,
       });
-
       const data = await response.json();
       setCity(data.name);
       setCountry(data.country);
@@ -114,7 +118,7 @@ export default function Home() {
           </span>
         )}
       </span>
-      <div className="">
+      <div>
         <form onSubmit={onSubmit} className="grid gap-2 grid-cols-2 ">
           <span className="flex flex-col gap-1 col-span-2 md:col-span-1">
             <label className="text-sm">City</label>
@@ -144,7 +148,7 @@ export default function Home() {
       </div>
       <h2 className="border-b text-xl">Weather info</h2>
       <div>
-        {error && <div>Place does not exist</div>}
+        {error && <div className="text-red-500">Place does not exist</div>}
         {loading && <div>Loading...</div>}
         {weather && !loading && (
           <div className="text-blue-500 dark:text-blue-300 flex flex-col">

@@ -327,12 +327,6 @@ const countries = [
 ];
 
 export const findCountry = (input: String) => {
-  console.log(input);
-  console.log(
-    countries.find(
-      (country) => country.name.toLowerCase() === input.toLowerCase()
-    )
-  );
   return countries.find(
     (country) => country.name.toLowerCase() === input.toLowerCase()
   );
