@@ -146,7 +146,7 @@ export default function Home() {
           </div>
         </form>
       </div>
-      <h2 className="border-b text-xl">Weather info</h2>
+      <h2 className="border-b text-xl">Weather</h2>
       <div>
         {error && <div className="text-red-500">Place does not exist</div>}
         {loading && <div>Loading...</div>}
@@ -179,9 +179,10 @@ export default function Home() {
           </div>
         )}
       </div>
-      <h3 className="border-b text-xl">History</h3>
+      <h3 className="border-b text-xl">Search History</h3>
       <div className="max-w-full">
         <ul className="space-y-2">
+          {history && history.length === 0 && <p>No records</p>}
           {history &&
             history.map((item, index) => (
               <li key={index} className="grid grid-cols-10 items-center">
